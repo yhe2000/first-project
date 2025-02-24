@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -51,6 +51,15 @@ Route::post('update',[TaskController::class,'update']);
 Route::get('app',function(){
     return view('layouts.app');
 });
+Route::get('users', [UserController::class, 'index']);
+
+Route::post('create-user', [UserController::class, 'create']);
+
+Route::post('delete-user/{id}', [UserController::class, 'destroy']);
+
+Route::get('edit-user/{id}', [UserController::class, 'edit']);
+
+Route::post('update-user', [UserController::class, 'update']);
 
 
 
