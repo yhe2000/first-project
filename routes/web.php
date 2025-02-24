@@ -53,5 +53,17 @@ Route::post('delete/{id}',function($id){
     return redirect()->back();
 });
 
+Route::post('edit/{id}',function($id){
+    $task = DB::table('tasks')->where('id',$id)->first();
+    $tasks = DB::table('tasks')->get();
+    return view('tasks',compact('task','tasks'));
+});
+
+Route::post('update',function(){
+   $id = $_POST['id'];
+   DB::table('tasks')->where('id','=',$id)->update(['name'=>$_POST['name']]);
+   return redirect('tasks');
+});
+
 
 
